@@ -1,0 +1,108 @@
+:root {
+	--container-size: 24px;
+}
+
+body {
+	background-color: teal;
+	margin: 0;
+	padding: 0 var(--container-size);
+	display: flex;
+	align-items: center;
+	height: 100vh;
+}
+
+.container {
+	font-family: "Montserrat", sans-serif;
+	background-color: white;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	padding: 20px;
+	min-height: 30vh;
+	margin: auto;
+}
+
+.container .title {
+	font-family: "Girassol", cursive;
+	width: 100%;
+	text-align: center;
+	font-size: 40px;
+}
+
+.container .button {
+	display: inline-block;
+	border: 0;
+	padding: 15px;
+	width: 100%;
+	margin: 10px 0;
+	color: white;
+	font-family: "Montserrat", sans-serif;
+	transition: background-color 200ms ease-in;
+	cursor: pointer;
+	box-sizing: border-box;
+	text-align: center;
+    text-decoration: none;
+}
+
+.container .button.button-1 {
+	background-color: #00d4ff;
+}
+
+.container .button.button-1:hover {
+	background-color: #038da8;
+}
+
+.container .button.button-2 {
+	background-color: #0476c1;
+}
+
+.container .button.button-2:hover {
+	background-color: #024a7a;
+}
+
+.container .button.button-3 {
+	background-color: #090979;
+}
+
+.container .button.button-3:hover {
+	background-color: #020241;
+}
+
+.container .button.button-4 {
+	background-color: #060161;
+}
+
+.container .button.button-4:hover {
+	background-color: #010014;
+}
+
+.image-wrapper {
+	position: absolute;
+	width: 150px;
+	bottom: 0;
+	right: 10%;
+}
+
+.image-wrapper svg {
+	height: 100%;
+	width: 100%;
+}
+
+@media (min-width: 768px) {
+	:root {
+		--container-size: 48px;
+	}
+}
+
+@media (min-width: 1200px) {
+	:root {
+		--container-size: 96px;
+	}
+}
+
+@media (min-width: 1440px) {
+	:root {
+		--container-size: 20%;
+	}
+}
