@@ -25,6 +25,15 @@ class modelCliente {
             ->setTelefone($_POST['telefone']);
     }
 
+    public function updateClienteFromPOST(){
+        $this->setCpf($_POST["cpf"])
+            ->setNome($_POST["nome"])
+            ->setCnh($_POST["cnh"])
+            ->setEndereco($_POST['endereco'])
+            ->setEmail($_POST['email'])
+            ->setTelefone($_POST['telefone']);
+    }
+
     public function setCpf($cpf) {
         $this->cpf = $cpf;
         return $this;
