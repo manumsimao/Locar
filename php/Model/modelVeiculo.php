@@ -2,25 +2,30 @@
     class modelVeiculo {
         public $id;
         public $placa;
-        public $modelo;
-        public $tipoTranmissao;
-        public $tipoCarroceria;
+        public $transmissao;
+        public $carroceria;
         public $status;
 
         public function setVeiculoFromDataBase($linha) {
             $this->setId($linha["id"])
                 ->setPlaca($linha["placa"])
-                ->setModelo($linha["modelo"])
-                ->setTipoTransmissao($linha['tipoTranmissao'])
-                ->setTipoCarroceria($linha['tipoCarroceria'])
+                ->setTransmissao($linha['transmissao'])
+                ->setCarroceria($linha['carroceria'])
                 ->setStatus($linha['status']);
         }
         public function setVeiculoFromPOST() {
             $this->setId($_POST["id"])
                 ->setPlaca($_POST["placa"])
-                ->setModelo($_POST["modelo"])
-                ->setTipoTransmissao($_POST['tipoTranmissao'])
-                ->setTipoCarroceria($_POST['tipoCarroceria'])
+                ->setTransmissao($_POST["transmissao"])
+                ->setCarroceria($_POST['carroceria'])
+                ->setStatus($_POST['status']);
+        }
+
+        public function updateVeiculoFromPOST(){
+            $this->setId($_POST["id"])
+                ->setPlaca($_POST["placa"])
+                ->setTransmissao($_POST["transmissao"])
+                ->setCarroceria($_POST['carroceria'])
                 ->setStatus($_POST['status']);
         }
     
@@ -42,31 +47,22 @@
             return $this->placa;
         }
     
-        public function setModelo($modelo) {
-            $this->modelo = $modelo;
+        public function setTransmissao($tranmissao) {
+            $this->tranmissao = $tranmissao;
             return $this;
         }
     
-        public function getModelo() {
-            return $this->modelo;
+        public function getTransmissao() {
+            return $this->tranmissao;
         }
     
-        public function setTipoTransmissao($tipoTranmissao) {
-            $this->tipoTranmissao = $tipoTranmissao;
+        public function setCarroceria($carroceria) {
+            $this->carroceria = $carroceria;
             return $this;
         }
     
-        public function getTipoTransmissao() {
-            return $this->tipoTranmissao;
-        }
-    
-        public function setTipoCarroceria($tipoCarroceria) {
-            $this->tipoCarroceria = $tipoCarroceria;
-            return $this;
-        }
-    
-        public function getTipoCarroceria() {
-            return $this->tipoCarroceria;
+        public function getCarroceria() {
+            return $this->carroceria;
         }
     
         public function setStatus($status) {

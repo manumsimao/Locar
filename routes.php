@@ -16,6 +16,7 @@ $action = $action[0];
 
 //Todo controller que tiver pelo menos uma rota associada a ele deve aparecer aqui.
 include_once $_SESSION["root"].'php/Controller/controllerCliente.php';
+include_once $_SESSION["root"].'php/Controller/controllerVeiculo.php';
 
 //debug($_SESSION);
 
@@ -40,6 +41,27 @@ if ($action == 'exibeClientes') {//Exibe Clientes
     $cliente = new controllerCliente();
     $cliente->deleteCliente();
     header("Location: exibeClientes");
+}else if ($action == 'exibeVeiculos') {//Exibe veiculos
+    $veiculo = new controllerVeiculo();
+    $veiculo->getAllVeiculos();
+}else if ($action == 'cadastraVeiculo') {//View cadastra veiculo
+    $veiculo = new controllerVeiculo();
+    $veiculo->getData();
+    require_once $_SESSION["root"].'php/View/viewCadastraVeiculo.php';
+}else if ($action == 'postCadastraVeiculo') {// Requisição para inserção veiculo
+    $veiculo = new controllerVeiculo();
+    $veiculo->setVeiculo();
+}else if ($action == 'editaVeiculo') {// View edita veiculo
+    $veiculo = new controllerVeiculo();
+    $veiculo->getBanco();
+    require_once $_SESSION["root"].'php/View/viewEditaVeiculo.php';
+}else if ($action == 'postEditaVeiculo') {// Requisição para edição do veiculo
+    $veiculo = new controllerVeiculo();
+    $veiculo->updateVeiculo();
+}else if ($action == 'postExcluirVeiculo') {// Requisição para delete veiculo
+    $veiculo = new controllerVeiculo();
+    $veiculo->deleteVeiculo();
+    header("Location: exibeVeiculos");
 }
 
 ?>
