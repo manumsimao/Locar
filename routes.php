@@ -5,6 +5,9 @@ Da forma como esse arquivo de rotas funciona, nós não fazemos “links” para
 ****Descomentar os print_r abaixo para entender melhor****
 */
 
+//Inicializa mensagem
+$_SESSION["flash"]["msg"]="";
+
 //Path é um array onde cada posição é um elemento da URL
 $path = explode('/', $_SERVER['REQUEST_URI']);
 //Action é a posição do array
@@ -17,6 +20,7 @@ $action = $action[0];
 //Todo controller que tiver pelo menos uma rota associada a ele deve aparecer aqui.
 include_once $_SESSION["root"].'php/Controller/controllerCliente.php';
 include_once $_SESSION["root"].'php/Controller/controllerVeiculo.php';
+include_once $_SESSION["root"].'php/Controller/controllerLocacao.php';
 
 //debug($_SESSION);
 
@@ -62,6 +66,19 @@ if ($action == 'exibeClientes') {//Exibe Clientes
     $veiculo = new controllerVeiculo();
     $veiculo->deleteVeiculo();
     header("Location: exibeVeiculos");
+}else if ($action == 'exibeLocacao') {//Exibe locações
+    $locacao = new controllerLocacao();
+    $locacao->getAllLocacoes();
+}else if ($action == 'cadastraLocacao') {//View cadastra cliente
+    $locacao = new controllerLocacao();
+    $locacao->getCVdata();
+    require_once $_SESSION["root"].'php/View/viewCadastraLocacao.php';
+}else if ($action == 'postCadastraLocacao') {// Requisição para inserção locação
+    $locacao = new controllerLocacao();
+    $locacao->setLocacao();
+}else if ($action == 'postExcluirLocacao') {// Requisição para delete locação
+    $locacao = new controllerLocacao();
+    $locacao->deleteLocacao();
+    header("Location: exibeLocacao");
 }
-
 ?>

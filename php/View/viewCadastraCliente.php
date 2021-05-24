@@ -10,16 +10,16 @@ $titulo="Cadastrar Cliente";
 				<div class="row">
                     <!-- Aviso de Sucesso ou Erro após cadastrar -->
 					<?php if(isset($_SESSION["flash"]["msg"])){
-                        if($_SESSION["flash"]["sucesso"]==false)
-                            echo"<div class='bg-danger text-center msg'>".$_SESSION["flash"]["msg"]."</div>";
-                        else{
-                            echo"<div class='bg-success text-center msg'>".$_SESSION["flash"]["msg"]."</div>";
-                            echo"<script>
-                                window.onload = function(){
+                        if(str_contains($_SESSION["flash"]["msg"], 'sucesso')){
+							echo"<div class='bg-success text-center msg'>".$_SESSION["flash"]["msg"]."</div>";
+							echo"<script>
+								window.onload = function(){
 									setTimeout(function(){ window.location.href = 'exibeClientes'; }, 2000);
-                                }
-                            </script>";
-                        }
+								}
+							</script>";
+						}else{
+							echo"<div class='bg-success text-center msg'>".$_SESSION["flash"]["msg"]."</div>";
+						}
 					} ?>
 
                     <!-- Campos do formulário de cadastro -->

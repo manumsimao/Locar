@@ -5,6 +5,7 @@ include_once $_SESSION["root"].'php/Model/modelCliente.php';
 
 class controllerCliente {
 	function getAllClientes(){
+		$_SESSION["flash"]["msg"]="";
 		$clienteDAO = new clienteDAO();
 		$clientes=$clienteDAO->getAllClientes();
 		include_once $_SESSION["root"].'php/View/viewExibeClientes.php';
@@ -28,12 +29,10 @@ class controllerCliente {
 		$resultadoInsercao = $clienteDAO->setCliente($cliente);
 			
 		if($resultadoInsercao){
-			$_SESSION["flash"]["msg"]="Cliente cadastrado com sucesso";
-			$_SESSION["flash"]["sucesso"]=true;			
+			$_SESSION["flash"]["msg"]="Cliente cadastrado com sucesso";		
 		}
 		else{
 			$_SESSION["flash"]["msg"]="O cliente já existe no banco";
-			$_SESSION["flash"]["sucesso"]=false;
 			//Var temp de feedback	
 			$_SESSION["flash"]["cpf"]=$cliente->getCpf();
 			$_SESSION["flash"]["nome"]=$cliente->getNome();
@@ -52,12 +51,10 @@ class controllerCliente {
 		$resultadoInsercao = $clienteDAO->updateCliente($cliente);
 			
 		if($resultadoInsercao){
-			$_SESSION["flash"]["msg"]="Cliente editado com sucesso";
-			$_SESSION["flash"]["sucesso"]=true;			
+			$_SESSION["flash"]["msg"]="Cliente editado com sucesso";		
 		}
 		else{
 			$_SESSION["flash"]["msg"]="O cliente já existe no banco";
-			$_SESSION["flash"]["sucesso"]=false;
 			//Var temp de feedback	
 			$_SESSION["flash"]["cpf"]=$cliente->getCpf();
 			$_SESSION["flash"]["nome"]=$cliente->getNome();
@@ -70,17 +67,11 @@ class controllerCliente {
 	}
 
 	function deleteCliente(){
+		$_SESSION["flash"]["msg"]="";
 		$path = explode('?', $_SERVER['REQUEST_URI']);
 		$idx = $path[1];
 		
 		$clienteDAO = new clienteDAO();
 		$resultadoInsercao = $clienteDAO->deleteCliente($idx);
-			
-		if($resultadoInsercao){
-			$_SESSION["flash"]["sucesso"]=true;			
-		}
-		else{
-			$_SESSION["flash"]["sucesso"]=false;
-		}
 	}
 }

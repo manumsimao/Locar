@@ -28,11 +28,12 @@ CREATE TABLE `veiculo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `locados` (
-  `id` varchar(512) DEFAULT NULL,
+  `id` varchar(512) PRIMARY KEY,
   `clienteCpf` varchar(512) DEFAULT NULL,
   `veiculoId` varchar(512) DEFAULT NULL,
   `prazo` varchar(512) DEFAULT NULL,
-  `opcao` varchar(512) DEFAULT NULL 
+  `opcao` varchar(512) DEFAULT NULL,
+  `preco` varchar(512) DEFAULT NULL 
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Inserções iniciais (Opcional)
@@ -45,5 +46,5 @@ INSERT INTO `veiculo` (`id`, `placa`, `transmissao`, `carroceria`, `status`) VAL
 ('1', 'xxx-1234', 'Sedan', 'Simples', 'disponível'),
 ('2', 'yyy-4321', 'Esportiva', 'N/D', 'alugado');
 
-INSERT INTO `locados` (`id`, `clienteCpf`, `veiculoId`, `prazo`, `opcao`) VALUES
-('1', '12345', '1', '30', 'dia');
+INSERT INTO `locados` (`id`, `clienteCpf`, `veiculoId`, `prazo`, `opcao`, `preco`) VALUES
+('1', '12345', '1', '30', 'dia', '12,50');

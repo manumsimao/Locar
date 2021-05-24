@@ -61,7 +61,7 @@ class veiculoDAO {
             return $statement->execute();
 			
         } catch (PDOException $e) {
-            echo "Erro ao inserir na base de dados.";
+            return false;
         }		
 	}
 	
@@ -92,7 +92,7 @@ class veiculoDAO {
             return $statement->execute();
 
         } catch (PDOException $e) {
-            echo "Erro ao alterar na base de dados.";
+            return false;
         }		
 	}
 
@@ -111,7 +111,7 @@ class veiculoDAO {
             return $statement->execute();
 
         } catch (PDOException $e) {
-            echo "Erro ao deletar na base de dados.".$e->getMessage();
+            return false;
         }		
 	}
 
