@@ -5,20 +5,23 @@
         public $transmissao;
         public $carroceria;
         public $status;
+        public $preco;
 
         public function setVeiculoFromDataBase($linha) {
             $this->setId($linha["id"])
                 ->setPlaca($linha["placa"])
                 ->setTransmissao($linha['transmissao'])
                 ->setCarroceria($linha['carroceria'])
-                ->setStatus($linha['status']);
+                ->setStatus($linha['status'])
+                ->setPreco($linha['preco']);
         }
         public function setVeiculoFromPOST() {
             $this->setId($_POST["id"])
                 ->setPlaca($_POST["placa"])
                 ->setTransmissao($_POST["transmissao"])
                 ->setCarroceria($_POST['carroceria'])
-                ->setStatus($_POST['status']);
+                ->setStatus($_POST['status'])
+                ->setPreco($_POST['preco']);
         }
 
         public function updateVeiculoFromPOST(){
@@ -26,7 +29,8 @@
                 ->setPlaca($_POST["placa"])
                 ->setTransmissao($_POST["transmissao"])
                 ->setCarroceria($_POST['carroceria'])
-                ->setStatus($_POST['status']);
+                ->setStatus($_POST['status'])
+                ->setPreco($_POST['preco']);
         }
     
         public function setId($id) {
@@ -72,6 +76,15 @@
     
         public function getStatus() {
             return $this->status;
+        }
+
+        public function setPreco($preco) {
+            $this->preco = $preco;
+            return $this;
+        }
+    
+        public function getPreco() {
+            return $this->preco;
         }
     }
 ?>

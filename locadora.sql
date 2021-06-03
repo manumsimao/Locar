@@ -24,7 +24,8 @@ CREATE TABLE `veiculo` (
   `placa` varchar(512) DEFAULT NULL,
   `transmissao` varchar(512) DEFAULT NULL,
   `carroceria` varchar(512) DEFAULT NULL,
-  `status` varchar(512) DEFAULT NULL
+  `status` varchar(512) DEFAULT NULL,
+  `preco` float DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `locados` (
@@ -38,13 +39,13 @@ CREATE TABLE `locados` (
 
 -- Inserções iniciais (Opcional)
 
-INSERT INTO `cliente` (`cpf`, `nome`, `cnh`, `endereço`, `email`, `telefone`) VALUES
+INSERT INTO `cliente` (`cpf`, `nome`, `cnh`, `endereCo`, `email`, `telefone`) VALUES
 ('12345', 'Alexandre', '5555511111', 'Rua Riberão Preto 140', 'xandao@gmail.com', '2222233333'),
 ('54321', 'Manu', '1111155555', 'Rua São Carlos 580', 'manu@gmail.com', '3333322222');
 
-INSERT INTO `veiculo` (`id`, `placa`, `transmissao`, `carroceria`, `status`) VALUES
-('1', 'xxx-1234', 'Sedan', 'Simples', 'disponível'),
-('2', 'yyy-4321', 'Esportiva', 'N/D', 'alugado');
+INSERT INTO `veiculo` (`id`, `placa`, `transmissao`, `carroceria`, `status`, `PRECO`) VALUES
+('1', 'xxx-1234', 'Sedan', 'Simples', 'disponível', 130.5),
+('2', 'yyy-4321', 'Esportiva', 'N/D', 'alugado', 100.9);
 
 INSERT INTO `locados` (`id`, `clienteCpf`, `veiculoId`, `prazo`, `opcao`, `preco`) VALUES
 ('1', '12345', '1', '30', 'dia', '12,50');

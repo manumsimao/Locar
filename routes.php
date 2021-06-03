@@ -21,6 +21,7 @@ $action = $action[0];
 include_once $_SESSION["root"].'php/Controller/controllerCliente.php';
 include_once $_SESSION["root"].'php/Controller/controllerVeiculo.php';
 include_once $_SESSION["root"].'php/Controller/controllerLocacao.php';
+include_once $_SESSION["root"].'php/Controller/controllerOrcamento.php';
 
 //debug($_SESSION);
 
@@ -80,5 +81,11 @@ if ($action == 'exibeClientes') {//Exibe Clientes
     $locacao = new controllerLocacao();
     $locacao->deleteLocacao();
     header("Location: exibeLocacao");
+}else if($action =='orcamento') {
+    $locacao = new controllerOrcamento();
+    $locacao->getVdata();
+    require_once $_SESSION["root"].'php/View/viewCadastraOrcamento.php';
+}else if($action =='' || $action =='home') {
+    require_once $_SESSION["root"].'php/View/home.php';
 }
 ?>

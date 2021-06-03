@@ -38,13 +38,15 @@ class veiculoDAO {
                 placa,
                 transmissao,
                 carroceria,
-                status) 
+                status,
+				preco) 
                 VALUES (
                 :id,
                 :placa,
                 :transmissao,
                 :carroceria,
-                :status)"
+                :status,
+				:preco)"
         	;
 
             //pego uma ref da conexão
@@ -58,6 +60,7 @@ class veiculoDAO {
             $statement->bindValue(":transmissao", $veiculo->getTransmissao());
             $statement->bindValue(":carroceria", $veiculo->getCarroceria());
             $statement->bindValue(":status", $veiculo->getStatus());
+			$statement->bindValue(":preco", $veiculo->getPreco());
             return $statement->execute();
 			
         } catch (PDOException $e) {
@@ -74,7 +77,8 @@ class veiculoDAO {
 												`placa`=:placa,
 												`transmissao`=:transmissao,
 												`carroceria`=:carroceria,
-												`status`=:status
+												`status`=:status,
+												`preco`=:preco
 												WHERE `id`=:id"
 												;
 
@@ -89,6 +93,7 @@ class veiculoDAO {
             $statement->bindValue(":transmissao", $veiculo->getTransmissao());
             $statement->bindValue(":carroceria", $veiculo->getCarroceria());
             $statement->bindValue(":status", $veiculo->getStatus());
+			$statement->bindValue(":preco", $veiculo->getPreco());
             return $statement->execute();
 
         } catch (PDOException $e) {

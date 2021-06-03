@@ -1,22 +1,22 @@
 <?php
 $titulo="Cadastrar Locação";
-//include $_SESSION["root"].'includes/header.php';
+include $_SESSION["root"].'includes/head.php';
 ?>
 <body>
 	<div class="container" >
 		<div id="principal">
 			<h1 class="text-center">Cadastro de Locação</h1>
 			<form action="postCadastraLocacao" method="POST">
-				<div class="row">
+				<div class="form not-grid">
                     <?php if(isset($_SESSION["flash"]["msg"])){
-                        if(str_contains($_SESSION["flash"]["msg"], 'sucesso')){
+                        if($_SESSION["flash"]["msg"]== 'sucesso'){
 							echo"<div class='bg-success text-center msg'>".$_SESSION["flash"]["msg"]."</div>";
 							echo"<script>
 								window.onload = function(){
 									setTimeout(function(){ window.location.href = 'exibeLocacao'; }, 2000);
 								}
 							</script>";
-						}else if(str_contains($_SESSION["flash"]["msg"], 'existe')){
+						}else if($_SESSION["flash"]["msg"]== 'existe'){
                             echo"<div class='bg-success text-center msg'>".$_SESSION["flash"]["msg"]."</div>
                             ";
                             echo"<script>
@@ -71,7 +71,6 @@ $titulo="Cadastrar Locação";
                     <!-- Fim de calculo orçamento -->
 
                     <!-- Campos do Orçamento -->
-                    <h1>Orçamento</h1>
 					<div class="col-md-6">
 						<div class="form-group">
                             <select id='opcao' name="opcao" onchange="calcularOrcamento()">
@@ -97,7 +96,7 @@ $titulo="Cadastrar Locação";
 					</div>
                     <!-- Fim Orçamento -->
 
-                    <h1>Locação</h1>
+
                     <?php 
                         //Puxa os veiculos disponiveis
                         echo "<p>Selecione o veiculo</p> <select name='veiculoId' id='veiculoId'>";
@@ -119,8 +118,14 @@ $titulo="Cadastrar Locação";
                         <input type="text" name="id" class="form-control" id="id" placeholder="Codigo locação">
                     </div>
 			  	</div>
-			    <button type="submit" class="btn btn-default center-block">Cadastrar</button>
+			    <button type="submit" class="button button-send">Cadastrar</button>
 			</form>
 		</div>
+        <a class="home-button" href="home">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+				<path d="M12 1l-12 12h3v10h18v-10h3l-12-12zm0 18c-1.607-1.626-3-2.84-3-4.027 0-1.721 2.427-2.166 3-.473.574-1.695 3-1.246 3 .473 0 1.187-1.393 2.402-3 4.027zm8-11.907l-3-3v-2.093h3v5.093z" />
+			</svg> 
+		</a>
 	</div>	
-</body>
+<?php
+include $_SESSION["root"] . 'includes/footer.php'; ?>

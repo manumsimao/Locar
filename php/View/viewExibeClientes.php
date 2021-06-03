@@ -1,82 +1,40 @@
 <?php
-$titulo="Exibir Clientes";
-//include $_SESSION["root"].'includes/header.php';
+$titulo = "Exibir Clientes";
+include $_SESSION["root"] . 'includes/head.php';
 ?>
+
 <body>
-	<div class="container" >
+	<div class="container">
 		<div id="principal">
 			<h1 class="text-center">Clientes</h1>
-			<table class="table table-striped">
-			<?php 
-				//$clientes foi criado no controller que chamou essa classe;
-				echo "<tr>";
-					echo "<th onclick='sortName()' style='cursor: pointer; color: blue;'>Nome</th>";
-					echo "<th>CPF</th>";
-					echo "<th>Endereço</th>";
-					echo "<th>Email</th>";
-                    echo "<th>Telefone</th>";
-					//if ($_SESSION["nivelAcesso"]==1){
-					//	echo "<th>Administrar</th>";
-					//}
-				echo "</tr>";
-				foreach ($clientes as $value) {
+			<table class="table">
+				<tr>
+					<th>Nome</th>
+					<th>CPF</th>
+					<th>Endereço</th>
+					<th>Email</th>
+					<th>Telefone</th>
+				</tr>
+				<?php foreach ($clientes as $value) {
 					echo "<tr>";
-						echo "<td>".$value->getNome()."</td>";
-						echo "<td>".$value->getCpf()."</td>";
-						echo "<td>".$value->getEndereco()."</td>";
-						echo "<td>".$value->getEmail()."</td>";
-						echo "<td>".$value->getTelefone()."</td>";
-						echo "<th><a style='cursor: pointer;' href='editaCliente?".$value->getCpf()."'>Editar </a> | <a style='cursor: pointer;' class='acaoExcluir' href='postExcluirCliente?".$value->getCpf()."'> Excluir</a></th>";
+					echo "<td>" . $value->getNome() . "</td>";
+					echo "<td>" . $value->getCpf() . "</td>";
+					echo "<td>" . $value->getEndereco() . "</td>";
+					echo "<td>" . $value->getEmail() . "</td>";
+					echo "<td>" . $value->getTelefone() . "</td>";
+					echo "<td class='edit'><a  href='editaCliente?" . $value->getCpf() . "'>Editar </a>";
+					echo "<td class='delete'> <a class='acaoExcluir' href='postExcluirCliente?" . $value->getCpf() . "'> Excluir</a></td>";
 					echo "</tr>";
 				}
-			?>
+				?>
 			</table>
 		</div>
-	</div>	
-</body>
+		<a class="home-button" href="home">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+				<path d="M12 1l-12 12h3v10h18v-10h3l-12-12zm0 18c-1.607-1.626-3-2.84-3-4.027 0-1.721 2.427-2.166 3-.473.574-1.695 3-1.246 3 .473 0 1.187-1.393 2.402-3 4.027zm8-11.907l-3-3v-2.093h3v5.093z" />
+			</svg> 
+		</a>
+	</div>
 
-<!-- add no footer -->
-<?php 
-	//include $_SESSION["root"].'includes/footer.php';
-	//if(isset($_SESSION["flash"])){
-	//	foreach ($_SESSION["flash"] as $key => $value) {
-	//		unset($_SESSION["flash"][$key]);	
-	//	}
-	//}
-?>
-<!-- fim footer -->
-
-<script>
-	function sortName() {
-		var table, rows, switching, i, x, y, shouldSwitch;
-		table = $('.table-striped')[0];
-		switching = true;
-		while (switching) {
-			switching = false;
-			rows = table.rows;
-			for (i = 1; i < (rows.length - 1); i++) {
-			shouldSwitch = false;
-			x = rows[i].getElementsByTagName("TD")[0];
-			y = rows[i + 1].getElementsByTagName("TD")[0];
-			if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-				shouldSwitch = true;
-				break;
-			}
-			}
-			if (shouldSwitch) {
-				rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-				switching = true;
-			}
-		}
-	}
-
-	$(document).ready(function () {
-        $('.visualizarFuncionario').addClass('active');
-		$('.acaoEditar').click(function() {
-			console.log('url_atual');
-		});
-		$('.acaoExcluir').click(function() {
-			console.log('url_atual');
-		});
-    });
-</script>
+<?php
+include $_SESSION["root"] . 'includes/footer.php'; ?>

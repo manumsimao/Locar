@@ -39,6 +39,7 @@ class controllerVeiculo {
 			$_SESSION["flash"]["transmissao"]=$veiculo->getTransmissao();
 			$_SESSION["flash"]["carroceria"]=$veiculo->getCarroceria();
 			$_SESSION["flash"]["status"]=$veiculo->getStatus();
+			$_SESSION["flash"]["preco"]=$veiculo->getPreco();
 		}
 		include_once $_SESSION["root"].'php/View/viewCadastraVeiculo.php';
 	}
